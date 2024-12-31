@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Altice Labs Test</h1>
+    <p class="lead">Technical challenge developed by candidate Miguel Castro</p>
+    <hr class="my-4">
+  </div>
+
+  <div>
+    <div class="input-group mb-3">
+      <input type="number" [(ngModel)]="inputNumber" class="form-control"
+        placeholder="Enter a number between 0 and 100000" aria-label="inputNumber">
+      <button type="button" (click)="getLabSeq()" class="btn-input btn btn-outline-success">Run</button>
+    </div>
+  </div>
+
+  <div *ngIf="loadingResult" class="spinner-border text-success" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div *ngIf="result">
+    <div class="container card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ result.result }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ result.time }}</h6>
+        <br>
+        <button type="button" class="btn-input btn btn-outline-success" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          Show sequences
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sequences</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <code>{{ result?.sequence?.join(', ') }}</code>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-input btn btn-outline-success" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ errorMessage }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+</div>
