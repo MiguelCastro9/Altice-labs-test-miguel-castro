@@ -10,6 +10,7 @@ Developed with the technologies described in the pdf document, where we must ret
 <li> Quarkus </li>
 <li> Swagger UI </li>
 <li> Angular 17 </li>
+<li> Bootstrap </li>
 
 <br>
 
